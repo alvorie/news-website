@@ -3,16 +3,15 @@ import { newsData } from "@/lib/newsData";
 import { notFound } from "next/navigation";
 
 interface Props {
-  params: {
-    id: string;
-  };
+  params: Promise<{ id: string }>;
 }
 
-export default async function NewsPage({ params }: Props) {
-  await new Promise((resolve) => setTimeout(resolve, 800));
+export default async function NewsPage(props: Props) {
+  const params = await props.params;
+  const { id } = params;
 
   // проверка id
-  const news = newsData.find((item) => item.id.toString() === params.id);
+  const news = newsData.find((item) => item.id.toString() === id);
 
   if (!news) {
     notFound();
