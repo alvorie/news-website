@@ -3,8 +3,6 @@
 import React from "react";
 import styles from "./Modal.module.css";
 import { NewsItem } from "@/app/types";
-import Link from "next/link";
-import { style } from "framer-motion/client";
 
 interface ModalProps {
   isOpen: boolean;
